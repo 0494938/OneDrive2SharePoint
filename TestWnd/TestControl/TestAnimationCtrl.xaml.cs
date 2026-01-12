@@ -1,9 +1,7 @@
 ﻿using GcjUiCtrl.Control;
-using Microsoft.Web.WebView2.Core;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Interop;
 using System.Windows.Media;
 using Color = System.Windows.Media.Color;
 
@@ -13,7 +11,7 @@ namespace IsidTestApp
     /// <summary>
     /// TestControlWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class IsidTestControlWindow : GcjBaseWindow
+    public partial class TestAnimationCtrl : GcjBaseWindow
     {
         private void OnBackGroundColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
@@ -30,7 +28,7 @@ namespace IsidTestApp
             btnAnimationButton.StartAnimation = !btnAnimationButton.StartAnimation;
         }
 
-        public IsidTestControlWindow()
+        public TestAnimationCtrl()
         {
             InitializeComponent();
             Loaded += IsidTestControlWindow_Loaded;

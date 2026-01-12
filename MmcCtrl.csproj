@@ -54,6 +54,7 @@
     <None Remove="Filter.jpeg" />
     <None Remove="Filter2.png" />
     <None Remove="Filter3.png" />
+    <None Remove="Icons\file_completed.png" />
     <None Remove="Novel13.ico" />
     <None Remove="Novel9.jpg" />
     <None Remove="open_new_window3.png" />
@@ -92,6 +93,8 @@
     <None Remove="system6.jpg" />
     <None Remove="Test3.jpg" />
     <None Remove="TestWnd\TestControl\convert10.png" />
+    <None Remove="TestWnd\TestControl\Folder1.png" />
+    <None Remove="TestWnd\TestControl\Folder2.png" />
     <None Remove="TestWnd\TestControl\isid1-transparent.png" />
     <None Remove="TestWnd\TestControl\mitsubish-symbol.png" />
   </ItemGroup>
@@ -220,42 +223,50 @@
     <Content Include="resources\Test3.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Icons\file.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\file_completed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\file_pending.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\file_processing.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\folder.close.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\folder.open.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\folder_completed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\folder_pending.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\folder_processing.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="TestWnd\TestControl\convert10.png" />
+    <Resource Include="TestWnd\TestControl\Folder1.png" />
+    <Resource Include="TestWnd\TestControl\Folder2.png" />
     <Resource Include="TestWnd\TestControl\isid1-transparent.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="TestWnd\TelDemo\bak\Temp1OrgTelTestWedgitWindowControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Controls\CustomizedSlideUserControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="TestWnd\TelDemo\bak\Temp1OrgTelTestWedgitWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Controls\CustomizedNativeWndCtrlHost.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="TestWnd\TestControl\IsidTestShadowWindow.xaml.cs">
+    <Compile Update="TestWnd\TestControl\TestAnimationCtrl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="TestWnd\TestControl\IsidTestControlWindowBak1.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="TestWnd\TestControl\TelTestSearchWedgit.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="TestWnd\TelDemo\TelTestWedgitWindowControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="TestWnd\TelDemo\bak\OrgTelTestWedgitWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="TestWnd\TelDemo\TelTestWedgitWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="TestWnd\TestControl\MitsubishiTestControlWindow.xaml.cs">
+    <Compile Update="TestWnd\TestControl\MitsubishiTMigrateDataToSP.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -289,11 +300,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="TestWnd\TestControl\MitsubishiTestControlWindow.xaml">
+    <Page Update="TestWnd\TestControl\MitsubishiTMigrateDataToSP.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="TestWnd\TelDemo\bak\OrgTelTestWedgitWindow.xaml">
-      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
 

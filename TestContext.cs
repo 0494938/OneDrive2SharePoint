@@ -1,12 +1,7 @@
 ﻿using BaseUtil;
 using GcjUiCtrl.Control;
-using GcjUtil;
-using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
@@ -15,6 +10,11 @@ namespace IsidTestApp
 
     public partial class TestContext : DependencyObject, INotifyPropertyChanged
     {
+
+        public ObservableCollection<SrcNodeViewModel> SrcFolders { get; set; } = new();
+        public ObservableCollection<DstNodeViewModel> DstFolders { get; set; } = new();
+
+
         public event PropertyChangedEventHandler? PropertyChanged;
         private void OnPropertyChanged(string propertyName)
         {

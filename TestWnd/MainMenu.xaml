@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen" WindowState="Normal"  
         WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" 
         Background="Transparent"
-        Title="MainMenu" Height="500" Width="400" Icon="/resources/menu3.png">
+        Title="MainMenu" Height="300" Width="400" Icon="/resources/menu3.png">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,7 +17,8 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Border x:Name="RgnBorder" CornerRadius="10" BorderThickness="0" Margin="10" Padding="5" Background="#F3F3F3"><!---->
+    <Border x:Name="RgnBorder" CornerRadius="10" BorderThickness="0" Margin="10" Padding="5" Background="#F3F3F3">
+        <!---->
         <Border.Effect>
             <!--<DropShadowEffect Color="#F3F3F3" BlurRadius="10" Direction="320" ShadowDepth="5" Opacity="0.5"/>-->
             <DropShadowEffect Color="LightGray" BlurRadius="10" Direction="320" ShadowDepth="3" Opacity="0.5"/>
@@ -25,12 +26,6 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="25"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -49,8 +44,18 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <ctrl:CustomizedFlatButton Grid.Column="0"
-                    x:Name="btnIsidTestControlWindow" FontSize="14" FontWeight="Bold" EnableDefaultClickAction="False"
-                    BorderBrush="Gray" Style="{StaticResource xCustomizedFlatButtonStyle2}" Content="IsidTestControl" Foreground="BlueViolet" Click="btnIsidTestControlWindow_Click"/>
+                    x:Name="btnTestAnimationCtrl" FontSize="14" FontWeight="Bold" EnableDefaultClickAction="False"
+                    BorderBrush="Gray" Style="{StaticResource xCustomizedFlatButtonStyle2}" Content="IsidTestControl" Foreground="BlueViolet" Click="btnTestAnimationCtrl_Click"/>
+                <ctrl:CustomizedFlatButton Grid.Column="1"
+                x:Name="btnMigrateOneDriveToSP" FontSize="14" FontWeight="ExtraBold"  EnableDefaultClickAction="False"
+                BorderBrush="Gray" Style="{StaticResource xCustomizedFlatButtonStyle2}" BorderThickness="2" Content="Tel Wedgit Window" Foreground="BlueViolet" IsDefault="True" Click="btnMigrateOneDriveToSP_Click">
+                    <ctrl:CustomizedFlatButton.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="LightGreen"/>
+                            <GradientStop Color="LightBlue" Offset="1"/>
+                        </LinearGradientBrush>
+                    </ctrl:CustomizedFlatButton.Background>
+                </ctrl:CustomizedFlatButton>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -64,48 +69,18 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ctrl:CustomizedFlatButton Grid.Column="0" 
-                x:Name="btnTelTestWebBrowserGrayBGFrm" FontSize="14" FontWeight="ExtraBold"  EnableDefaultClickAction="False"
-                BorderBrush="Gray" Style="{StaticResource xCustomizedFlatButtonStyle2}" BorderThickness="1" Content="WebView2 RoundGrayFrame" Foreground="BlueViolet" IsDefault="False" Click="btnTelTestWebBrowserGrayBGFrm_Click" Margin="10,5,10,6">
-                </ctrl:CustomizedFlatButton>
-                <ctrl:CustomizedFlatButton Grid.Column="1" 
-                x:Name="btnTelTestWebBrowserNativeWnd" FontSize="14" FontWeight="ExtraBold"  EnableDefaultClickAction="False"
-                BorderBrush="Gray" Style="{StaticResource xCustomizedFlatButtonStyle2}" BorderThickness="1" Content="Native Edit Wnd(Pure)" Foreground="BlueViolet" IsDefault="False" Click="btnTelTestWebBrowserNativeWnd_Click" Grid.ColumnSpan="2" Margin="10,5,10,6">
-                </ctrl:CustomizedFlatButton>
             </Grid>
             <Grid Grid.Row="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ctrl:CustomizedFlatButton Grid.Column="0" 
-                x:Name="btnTelTestWebBrowserGrayBG" FontSize="14" FontWeight="ExtraBold"  EnableDefaultClickAction="False"
-                BorderBrush="Gray" Style="{StaticResource xCustomizedFlatButtonStyle2}" BorderThickness="1" Content="WebView2 Round Gray BG" Foreground="BlueViolet" IsDefault="False" Click="btnTelTestWebBrowserGrayBG_Click">
-                </ctrl:CustomizedFlatButton>
-                <ctrl:CustomizedFlatButton Grid.Column="1" 
-                x:Name="btnTelTestWebBrowser" FontSize="14" FontWeight="ExtraBold"  EnableDefaultClickAction="False"
-                BorderBrush="Gray" Style="{StaticResource xCustomizedFlatButtonStyle2}" BorderThickness="1" Content="Test WebView2 Round" Foreground="BlueViolet" IsDefault="False" Click="btnTelTestWebBrowser_Click">
-                    <ctrl:CustomizedFlatButton.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="LightGreen"/>
-                            <GradientStop Color="LightBlue" Offset="1"/>
-                            <!--<GradientStop Color="LightBlue"/>
-                        <GradientStop Color="White" Offset="1"/>-->
-                        </LinearGradientBrush>
-                    </ctrl:CustomizedFlatButton.Background>
-                </ctrl:CustomizedFlatButton>
             </Grid>
             <Grid Grid.Row="5" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ctrl:CustomizedFlatButton Grid.Column="0"
-                    x:Name="btnTelTestFileContentThumeNail" FontSize="14" FontWeight="ExtraBold"  EnableDefaultClickAction="False"
-                    BorderBrush="Gray" Style="{StaticResource xCustomizedFlatButtonStyle2}" BorderThickness="1" Content="File ThumbNail Shell" Foreground="BlueViolet" IsDefault="False" Click="btnTelTestFileContentThumeNail_Click"/>
-                <ctrl:CustomizedFlatButton  Grid.Column="1"
-                    x:Name="btnTelTestFileContentThumeNailAspose" FontSize="14" FontWeight="ExtraBold"  EnableDefaultClickAction="False"
-                    BorderBrush="Gray" Style="{StaticResource xCustomizedFlatButtonStyle2}" BorderThickness="1" Content="File by Aspose ThumbNail(廃棄)" Foreground="BlueViolet" IsDefault="False" Click="btnTelTestFileContentThumeNailAspose_Click"/>
             </Grid>
             <Grid Grid.Row="6">
                 <Grid.ColumnDefinitions>
@@ -118,52 +93,34 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ctrl:CustomizedFlatButton
-                x:Name="btnTelTestWedgitWindow" FontSize="14" FontWeight="ExtraBold"  EnableDefaultClickAction="False"
-                BorderBrush="Gray" Style="{StaticResource xCustomizedFlatButtonStyle2}" BorderThickness="2" Content="Tel Wedgit Window" Foreground="BlueViolet" IsDefault="True" Click="btnTelTestWedgitWindow_Click">
-                    <ctrl:CustomizedFlatButton.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="LightGreen"/>
-                            <GradientStop Color="LightBlue" Offset="1"/>
-                        </LinearGradientBrush>
-                    </ctrl:CustomizedFlatButton.Background>
-                </ctrl:CustomizedFlatButton>
             </Grid>
             <Grid Grid.Row="8">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ctrl:CustomizedFlatButton Grid.Column="0" 
-                    x:Name="btnTelTestSearchWedgit" FontSize="14" FontWeight="ExtraBold"  EnableDefaultClickAction="False"
-                    BorderBrush="Gray" Style="{StaticResource xCustomizedFlatButtonStyle2}" BorderThickness="1" Content="Test Search Wedgit" Foreground="BlueViolet" IsDefault="False" Click="btnTelTestSearchWedgit_Click">
-                </ctrl:CustomizedFlatButton>
-                <ctrl:CustomizedFlatButton Grid.Column="1" 
-                    x:Name="btnTelTestShadowWindow" FontSize="14" FontWeight="ExtraBold"  EnableDefaultClickAction="False"
-                    BorderBrush="Gray" Style="{StaticResource xCustomizedFlatButtonStyle2}" BorderThickness="1" Content="Test Shadow Window" Foreground="BlueViolet" IsDefault="False" Click="btnTelTestShadowWindow_Click">
-                </ctrl:CustomizedFlatButton>
             </Grid>
             <Grid Grid.Row="9">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ctrl:CustomizedFlatButton Grid.Column="0" 
-                    x:Name="btnCheckChatTag" FontSize="14" FontWeight="ExtraBold"  EnableDefaultClickAction="False"
-                    BorderBrush="Gray" Style="{StaticResource xCustomizedFlatButtonStyle2}" BorderThickness="1" Content="Test DeepSeek Chat Tag" Foreground="BlueViolet" IsDefault="False" Click="btnCheckChatTag_Click">
-                </ctrl:CustomizedFlatButton>
-               
+
             </Grid>
 
         </Grid>
         <!--<Border.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                --><!-- 从浅蓝色到浅灰，覆盖 0 到 0.8 --><!--
+                -->
+        <!-- 从浅蓝色到浅灰，覆盖 0 到 0.8 -->
+        <!--
                 <GradientStop Color="#E0F7FF" Offset="0" />
                 <GradientStop Color="LightBlue" Offset="0.6" />
 
                 <GradientStop Color="White" Offset="0.8" />
-                --><!-- 从浅灰回到浅蓝色，覆盖 0.8 到 1 --><!--
+                -->
+        <!-- 从浅灰回到浅蓝色，覆盖 0.8 到 1 -->
+        <!--
                 <GradientStop Color="#E0F7FF" Offset="1" />
             </LinearGradientBrush>
         </Border.Background>-->

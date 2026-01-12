@@ -52,11 +52,11 @@ namespace IsidTestApp
             mainWindow.Show();
 #else
 #if true
-#if false
+#if true
             var mainWindow = new MainMenu();
             mainWindow.Show();
 #else
-            var mainWindow = new IsidTestControlWindow();
+            var mainWindow = new TestAnimationCtrl();
             mainWindow.Show();
             
             #endif
