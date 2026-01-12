@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "IsidUsedCtrl": {
+      "commandName": "Project",
+      "nativeDebugging": false,
+      "jsWebView2Debugging": false,
+      "sqlDebugging": false
+    }
+  }
+}

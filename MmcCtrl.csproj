@@ -1,0 +1,300 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <WebView2LoaderPreference>Static</WebView2LoaderPreference>
+    <WebView2EnableCsWinRTProjection>False</WebView2EnableCsWinRTProjection>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.17763.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>IsidTestApp.App</StartupObject>
+    <ApplicationIcon>isid1-transparent.ico</ApplicationIcon>
+    <UseWindowsForms>False</UseWindowsForms>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+
+	<Compile Remove="Controls\CustomizedDiffViewer.cs" />
+    <Compile Remove="Controls\CustomizedGcjDiffViewerUserControl.xaml.cs" />
+    <Compile Remove="Controls\CustomizedSideBySideDiffViewer.cs" />
+    <Compile Remove="Controls\CustomizedSideBySideDiffViewerUserControl.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="1.png" />
+    <None Remove="10.jpg" />
+    <None Remove="13.png" />
+    <None Remove="2.jpg" />
+    <None Remove="3.png" />
+    <None Remove="4.jpg" />
+    <None Remove="5.jpg" />
+    <None Remove="Auto8.jpg" />
+    <None Remove="Back5.png" />
+    <None Remove="BookDownloader.lnk" />
+    <None Remove="Controls\control1.png" />
+    <None Remove="Controls\control4.png" />
+    <None Remove="Controls\control5.png" />
+    <None Remove="Controls\download6.png" />
+    <None Remove="Controls\encoding6.jpg" />
+    <None Remove="Controls\encoding7.png" />
+    <None Remove="Controls\face5.jpg" />
+    <None Remove="Controls\forward2.png" />
+    <None Remove="Controls\menu3.png" />
+    <None Remove="dog3.png" />
+    <None Remove="face1.jpg" />
+    <None Remove="face2.jpg" />
+    <None Remove="face3.jpg" />
+    <None Remove="face4.jpg" />
+    <None Remove="face6.jpg" />
+    <None Remove="Filter.jpeg" />
+    <None Remove="Filter2.png" />
+    <None Remove="Filter3.png" />
+    <None Remove="Novel13.ico" />
+    <None Remove="Novel9.jpg" />
+    <None Remove="open_new_window3.png" />
+    <None Remove="resources\Auto8.jpg" />
+    <None Remove="resources\Back5.png" />
+    <None Remove="resources\control1.png" />
+    <None Remove="resources\control4.png" />
+    <None Remove="resources\control5.png" />
+    <None Remove="resources\dog3.png" />
+    <None Remove="resources\download6.png" />
+    <None Remove="resources\encoding6.jpg" />
+    <None Remove="resources\encoding7.png" />
+    <None Remove="resources\face1.jpg" />
+    <None Remove="resources\face2.jpg" />
+    <None Remove="resources\face3.jpg" />
+    <None Remove="resources\face4.jpg" />
+    <None Remove="resources\face5.jpg" />
+    <None Remove="resources\face6.jpg" />
+    <None Remove="resources\Filter.jpeg" />
+    <None Remove="resources\Filter2.png" />
+    <None Remove="resources\Filter3.png" />
+    <None Remove="resources\forward2.png" />
+    <None Remove="resources\menu3.png" />
+    <None Remove="resources\Novel9.jpg" />
+    <None Remove="resources\open_new_window3.png" />
+    <None Remove="resources\return2.jpg" />
+    <None Remove="resources\return3.png" />
+    <None Remove="resources\return5.png" />
+    <None Remove="resources\return6.png" />
+    <None Remove="resources\system6.jpg" />
+    <None Remove="resources\Test3.jpg" />
+    <None Remove="return2.jpg" />
+    <None Remove="return3.png" />
+    <None Remove="return5.png" />
+    <None Remove="return6.png" />
+    <None Remove="system6.jpg" />
+    <None Remove="Test3.jpg" />
+    <None Remove="TestWnd\TestControl\convert10.png" />
+    <None Remove="TestWnd\TestControl\isid1-transparent.png" />
+    <None Remove="TestWnd\TestControl\mitsubish-symbol.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Controls\CustomizedGcjDiffViewerUserControl.xaml" />
+    <Page Remove="Controls\CustomizedSideBySideDiffViewerUserControl.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Novel13.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3650.58" />
+    <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="113.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="isid1-transparent.ico" />
+    <Content Include="resources\1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\10.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\13.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\5.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\Auto8.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\Back5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\control1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\control4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\control5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\dog3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\download6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\encoding6.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\encoding7.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\face1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\face2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\face3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\face4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\face5.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\face6.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\Filter.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\Filter2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\Filter3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\forward2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\menu3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\Novel9.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\open_new_window3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\return2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\return3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\return5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\return6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\system6.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\Test3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="TestWnd\TestControl\convert10.png" />
+    <Resource Include="TestWnd\TestControl\isid1-transparent.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="TestWnd\TelDemo\bak\Temp1OrgTelTestWedgitWindowControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\CustomizedSlideUserControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TestWnd\TelDemo\bak\Temp1OrgTelTestWedgitWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\CustomizedNativeWndCtrlHost.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TestWnd\TestControl\IsidTestShadowWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TestWnd\TestControl\IsidTestControlWindowBak1.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TestWnd\TestControl\TelTestSearchWedgit.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TestWnd\TelDemo\TelTestWedgitWindowControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TestWnd\TelDemo\bak\OrgTelTestWedgitWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TestWnd\TelDemo\TelTestWedgitWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TestWnd\TestControl\MitsubishiTestControlWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="resources\CPP-Mode.xshd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="gsdll64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="gswin64c.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\watermark1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\watermark2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\watermark3.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\watermark6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="TestWnd\TestControl\MitsubishiTestControlWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="TestWnd\TelDemo\bak\OrgTelTestWedgitWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>

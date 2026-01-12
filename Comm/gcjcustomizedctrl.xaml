@@ -1,0 +1,779 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:WebV2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+                    xmlns:GcjUiCtrl="clr-namespace:GcjUiCtrl.Control">
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+    <GcjUiCtrl:HalfValueConverter x:Key="HalfValueConverter" />
+    <GcjUiCtrl:PointConverter x:Key="PointConverter" />
+    <GcjUiCtrl:GreaterThanZeroConverter x:Key="GreaterThanZeroConverter" />
+    <GcjUiCtrl:BooleanToVisibilityMultiConverter x:Key="BooleanToVisibilityMultiConverter" />
+    <GcjUiCtrl:UserInfoToVisibilityConverter x:Key="UserInfoToVisibilityConverter" />
+    <GcjUiCtrl:MultiConditionToVisibilityConverter x:Key="MultiConditionToVisibilityConverter" />
+    <GcjUiCtrl:RectConverter x:Key="RectConverter" />
+    <GcjUiCtrl:MarginConverter2Ctrl x:Key="MarginConverter2Ctrl" />
+    <GcjUiCtrl:MarginConverter1Ctrl x:Key="MarginConverter1Ctrl" />
+    <GcjUiCtrl:MarginCustomizedConverterForIsidTestControlWindow x:Key="MarginCustomizedConverterForIsidTestControlWindow" />
+    <GcjUiCtrl:MarginCustomizedConverterForIsidTestControlWindowCtrl x:Key="MarginCustomizedConverterForIsidTestControlWindowCtrl" />
+    
+    <Style x:Key="FocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+    <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+    <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+    <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+    <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+    <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+    <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+    <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+
+    <Storyboard x:Key="RotateImageStoryboard5s" RepeatBehavior="Forever">
+        <!-- 360 度旋转动画 -->
+        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                     To="360" Duration="00:00:05"
+                     RepeatBehavior="Forever"/>
+    </Storyboard>
+    <Storyboard x:Key="RotateImageStoryboard3s" RepeatBehavior="Forever">
+        <!-- 360 度旋转动画 -->
+        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                     To="360" Duration="00:00:03"
+                     RepeatBehavior="Forever"/>
+    </Storyboard>
+    <Storyboard x:Key="RotateImageStoryboard10s" RepeatBehavior="Forever">
+        <!-- 360 度旋转动画 -->
+        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                     To="360" Duration="00:00:10"
+                     RepeatBehavior="Forever"/>
+    </Storyboard>
+
+    <Style x:Key="xRoundImageStyle" TargetType="GcjUiCtrl:CustomizedRoundImage">
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <!--<RotateTransform />-->
+                <RotateTransform x:Name="rotaTransform" CenterX="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfValueConverter}}" CenterY="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfValueConverter}}" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="xCustomizedImageButtonStyle" TargetType="{x:Type GcjUiCtrl:CustomizedImageButton}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GcjUiCtrl:CustomizedImageButton}">
+                    <Border x:Name="border" CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                        <Grid Background="{TemplateBinding Background}" Margin="5,5,5,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" x:Name="lblText" TextWrapping="{TemplateBinding TextWrapping}" Text="{TemplateBinding Text}" VerticalAlignment="Center" TextAlignment="Center" FontSize="{TemplateBinding FontSize}" Margin="5,0,5,0" Foreground="{TemplateBinding Foreground}"/>
+                            <GcjUiCtrl:CustomizedRoundImage Style="{StaticResource xRoundImageStyle}" Grid.Column="2" Source="{TemplateBinding ImageSource}" VerticalAlignment="Center"  StartAnimation="{TemplateBinding StartIconAnimation}" Margin="{TemplateBinding ImageMargin}">
+                                <Image.Clip>
+                                    <EllipseGeometry 
+                                        RadiusX="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Image}, Converter={StaticResource HalfValueConverter}}"
+                                        RadiusY="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Image}, Converter={StaticResource HalfValueConverter}}">
+                                        <EllipseGeometry.Center>
+                                            <MultiBinding Converter="{StaticResource PointConverter}">
+                                                <Binding Path="ActualWidth" RelativeSource="{RelativeSource AncestorType=Image}"/>
+                                                <Binding Path="ActualHeight" RelativeSource="{RelativeSource AncestorType=Image}"/>
+                                            </MultiBinding>
+                                        </EllipseGeometry.Center>
+                                    </EllipseGeometry>
+                                </Image.Clip>
+                            </GcjUiCtrl:CustomizedRoundImage>
+                        </Grid>
+                    </Border>
+                    
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Button.IsDefaulted" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="lblText" Value="{StaticResource Button.Disabled.Foreground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+    <Style x:Key="xCustomizedStatusBarControlStyle" TargetType="GcjUiCtrl:CustomizedStatusBarGrid">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="Margin" Value="5,1,5,-4"/>
+    </Style>
+
+    <Style x:Key="xDatePickerCalendarStyle"
+        TargetType="{x:Type Calendar}"
+        BasedOn="{StaticResource {x:Type Calendar}}" />
+
+    <Color x:Key="WindowColor">#FFE8EDF9</Color>
+    <Color x:Key="ContentAreaColorLight">#FFC5CBF9</Color>
+    <Color x:Key="ContentAreaColorDark">#FF7381F9</Color>
+
+    <Color x:Key="DisabledControlLightColor">#FFE8EDF9</Color>
+    <Color x:Key="DisabledControlDarkColor">#FFC5CBF9</Color>
+    <Color x:Key="DisabledForegroundColor">#FF888888</Color>
+
+    <Color x:Key="SelectedBackgroundColor">#FFC5CBF9</Color>
+    <Color x:Key="SelectedUnfocusedColor">#FFDDDDDD</Color>
+
+    <Color x:Key="ControlLightColor">White</Color>
+    <Color x:Key="ControlMediumColor">#FF7381F9</Color>
+    <Color x:Key="ControlDarkColor">#FF211AA9</Color>
+
+    <Color x:Key="ControlMouseOverColor">#FF3843C4</Color>
+    <Color x:Key="ControlPressedColor">#FF211AA9</Color>
+
+
+    <Color x:Key="GlyphColor">#FF444444</Color>
+    <Color x:Key="GlyphMouseOver">sc#1, 0.004391443, 0.002428215, 0.242281124</Color>
+
+    <!--Border colors-->
+    <Color x:Key="BorderLightColor">#FFCCCCCC</Color>
+    <Color x:Key="BorderMediumColor">#FF888888</Color>
+    <Color x:Key="BorderDarkColor">#FF444444</Color>
+
+    <Color x:Key="PressedBorderLightColor">#FF888888</Color>
+    <Color x:Key="PressedBorderDarkColor">#FF444444</Color>
+
+    <Color x:Key="DisabledBorderLightColor">#FFAAAAAA</Color>
+    <Color x:Key="DisabledBorderDarkColor">#FF888888</Color>
+
+    <Color x:Key="DefaultBorderBrushDarkColor">Black</Color>
+
+    <!--Control-specific resources.-->
+    <Color x:Key="HeaderTopColor">#FFC5CBF9</Color>
+    <Color x:Key="DatagridCurrentCellBorderColor">Black</Color>
+    <Color x:Key="SliderTrackDarkColor">#FFC5CBF9</Color>
+
+    <Color x:Key="NavButtonFrameColor">#FF3843C4</Color>
+
+    <LinearGradientBrush x:Key="MenuPopupBrush"
+                  EndPoint="0.5,1"
+                  StartPoint="0.5,0">
+        <GradientStop Color="{DynamicResource ControlLightColor}"
+             Offset="0" />
+        <GradientStop Color="{DynamicResource ControlMediumColor}"
+             Offset="0.5" />
+        <GradientStop Color="{DynamicResource ControlLightColor}"
+             Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ProgressBarIndicatorAnimatedFill"
+                  StartPoint="0,0"
+                  EndPoint="1,0">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#000000FF"
+                 Offset="0" />
+                <GradientStop Color="#600000FF"
+                 Offset="0.4" />
+                <GradientStop Color="#600000FF"
+                 Offset="0.6" />
+                <GradientStop Color="#000000FF"
+                 Offset="1" />
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <Style x:Key="xDropDownButtonStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0" />
+                                    <VisualTransition GeneratedDuration="0:0:0.1" To="MouseOver" />
+                                    <VisualTransition GeneratedDuration="0:0:0.1" To="Pressed" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames BeginTime="0"
+                                             Duration="00:00:00.001"
+                                             Storyboard.TargetName="BackgroundGradient"
+                                             Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                            <SplineColorKeyFrame KeyTime="0" Value="#F2FFFFFF" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames BeginTime="0"
+                                             Duration="00:00:00.001"
+                                             Storyboard.TargetName="BackgroundGradient"
+                                             Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+                                            <SplineColorKeyFrame KeyTime="0" Value="#CCFFFFFF" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimation Duration="0"
+                                             To="#FF448DCA"
+                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                             Storyboard.TargetName="Background" />
+                                        <ColorAnimationUsingKeyFrames BeginTime="0"
+                                             Duration="00:00:00.001"
+                                             Storyboard.TargetName="BackgroundGradient"
+                                             Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[3].(GradientStop.Color)">
+                                            <SplineColorKeyFrame KeyTime="0"
+                                      Value="#7FFFFFFF" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames BeginTime="0"
+                                             Duration="00:00:00.001"
+                                             Storyboard.TargetName="Background"
+                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)">
+                                            <SplineColorKeyFrame KeyTime="0"
+                                      Value="#FF448DCA" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames BeginTime="0"
+                                              Duration="00:00:00.001"
+                                              Storyboard.TargetProperty="(UIElement.Opacity)"
+                                              Storyboard.TargetName="Highlight">
+                                            <SplineDoubleKeyFrame KeyTime="0"
+                                       Value="1" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames BeginTime="0"
+                                             Duration="00:00:00.001"
+                                             Storyboard.TargetName="BackgroundGradient"
+                                             Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+                                            <SplineColorKeyFrame KeyTime="0"
+                                      Value="#F4FFFFFF" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames BeginTime="0"
+                                             Duration="00:00:00.001"
+                                             Storyboard.TargetName="BackgroundGradient"
+                                             Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                            <SplineColorKeyFrame KeyTime="0"
+                                      Value="#EAFFFFFF" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames BeginTime="0"
+                                             Duration="00:00:00.001"
+                                             Storyboard.TargetName="BackgroundGradient"
+                                             Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[2].(GradientStop.Color)">
+                                            <SplineColorKeyFrame KeyTime="0"
+                                      Value="#C6FFFFFF" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames BeginTime="0"
+                                             Duration="00:00:00.001"
+                                             Storyboard.TargetName="BackgroundGradient"
+                                             Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[3].(GradientStop.Color)">
+                                            <SplineColorKeyFrame KeyTime="0"
+                                      Value="#6BFFFFFF" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid Background="#11FFFFFF"
+                             FlowDirection="LeftToRight"
+                             HorizontalAlignment="Center"
+                             Height="18"
+                             Margin="0,0,0,0"
+                             VerticalAlignment="Center"
+                             Width="19">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="20*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="23*" />
+                                <RowDefinition Height="19*" />
+                                <RowDefinition Height="19*" />
+                                <RowDefinition Height="19*" />
+                            </Grid.RowDefinitions>
+                            <Border x:Name="Highlight"
+                                 BorderThickness="1"
+                                 Grid.ColumnSpan="4"
+                                 CornerRadius="0,0,1,1"
+                                 Margin="-1"
+                                 Opacity="1"
+                                 Grid.Row="0"
+                                 Grid.RowSpan="4">
+                                <Border.BorderBrush>
+                                    <SolidColorBrush Color="{DynamicResource ControlPressedColor}" />
+                                </Border.BorderBrush>
+                            </Border>
+                            <Border x:Name="Background"
+                                 BorderBrush="#FFFFFFFF"
+                                 BorderThickness="1"
+                                 Grid.ColumnSpan="4"
+                                 CornerRadius=".5"
+                                 Margin="0,-1,0,0"
+                                 Opacity="1"
+                                 Grid.Row="1"
+                                 Grid.RowSpan="3">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{DynamicResource ControlDarkColor}" />
+                                </Border.Background>
+                            </Border>
+                            <Border x:Name="BackgroundGradient"
+                                 BorderBrush="#BF000000"
+                                 BorderThickness="1"
+                                 Grid.ColumnSpan="4"
+                                 CornerRadius=".5"
+                                 Margin="0,-1,0,0"
+                                 Opacity="1"
+                                 Grid.Row="1"
+                                 Grid.RowSpan="3">
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint=".7,1"
+                                  StartPoint=".7,0">
+                                        <GradientStop Color="#FFFFFFFF" Offset="0" />
+                                        <GradientStop Color="#F9FFFFFF" Offset="0.375" />
+                                        <GradientStop Color="#E5FFFFFF" Offset="0.625" />
+                                        <GradientStop Color="#C6FFFFFF" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                            <Rectangle Grid.ColumnSpan="4"
+                                Grid.RowSpan="1"
+                                StrokeThickness="1">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0,1"
+                                  StartPoint="0,0">
+                                        <GradientStop Color="{DynamicResource HeaderTopColor}" />
+                                        <GradientStop Color="{DynamicResource ControlMediumColor}" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                                <Rectangle.Stroke>
+                                    <LinearGradientBrush EndPoint="0.48,-1"
+                                  StartPoint="0.48,1.25">
+                                        <GradientStop Color="#FF494949" />
+                                        <GradientStop Color="#FF9F9F9F"
+                             Offset="1" />
+                                    </LinearGradientBrush>
+                                </Rectangle.Stroke>
+                            </Rectangle>
+                            <Path Fill="#FF2F2F2F"
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               Grid.RowSpan="3"
+                               Grid.ColumnSpan="4"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               RenderTransformOrigin="0.5,0.5"
+                               Margin="4,3,4,3"
+                               Stretch="Fill"
+                               Data="M11.426758,8.4305077 L11.749023,8.4305077 
+                                 L11.749023,16.331387 L10.674805,16.331387 
+                                 L10.674805,10.299648 L9.0742188,11.298672
+                                 L9.0742188,10.294277 C9.4788408,10.090176 
+                                 9.9094238,9.8090878 10.365967,9.4510155 
+                                 C10.82251,9.0929432 11.176106,8.7527733 
+                                 11.426758,8.4305077 z M14.65086,8.4305077 
+                                 L18.566387,8.4305077 L18.566387,9.3435936 
+                                 L15.671368,9.3435936 L15.671368,11.255703 
+                                 C15.936341,11.058764 16.27293,10.960293 
+                                 16.681133,10.960293 C17.411602,10.960293 
+                                 17.969301,11.178717 18.354229,11.615566 
+                                 C18.739157,12.052416 18.931622,12.673672
+                                 18.931622,13.479336 C18.931622,15.452317 
+                                 18.052553,16.438808 16.294415,16.438808
+                                 C15.560365,16.438808 14.951641,16.234707 
+                                 14.468243,15.826504 L14.881817,14.929531
+                                 C15.368796,15.326992 15.837872,15.525723 
+                                 16.289043,15.525723 C17.298809,15.525723 
+                                 17.803692,14.895514 17.803692,13.635098 
+                                 C17.803692,12.460618 17.305971,11.873379 
+                                 16.310528,11.873379 C15.83071,11.873379 
+                                 15.399232,12.079271 15.016094,12.491055
+                                 L14.65086,12.238613 z" />
+                            <Ellipse Grid.ColumnSpan="4"
+                                  Fill="#FFFFFFFF"
+                                  HorizontalAlignment="Center"
+                                  Height="3"
+                                  StrokeThickness="0"
+                                  VerticalAlignment="Center"
+                                  Width="3" />
+                            <Border x:Name="DisabledVisual"
+                                 BorderBrush="#B2FFFFFF"
+                                 BorderThickness="1"
+                                 Grid.ColumnSpan="4"
+                                 CornerRadius="0,0,.5,.5"
+                                 Opacity="0"
+                                 Grid.Row="0"
+                                 Grid.RowSpan="4" />
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="xCustomizedDatePickerStyle" TargetType="{x:Type GcjUiCtrl:CustomizedDatePicker}">
+        <Setter Property="Foreground" Value="#FF333333" />
+        <Setter Property="IsTodayHighlighted" Value="True" />
+        <Setter Property="SelectedDateFormat" Value="Short" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="CalendarStyle" Value="{DynamicResource xDatePickerCalendarStyle}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GcjUiCtrl:CustomizedDatePicker}">
+                    <Border BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush EndPoint="0.5,1"
+                              StartPoint="0.5,0">
+                                <GradientStop Color="{DynamicResource BorderLightColor}"
+                         Offset="0" />
+                                <GradientStop Color="{DynamicResource BorderDarkColor}"
+                         Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1"
+                              StartPoint="0.5,0">
+                                <GradientStop Color="{DynamicResource HeaderTopColor}"
+                         Offset="0" />
+                                <GradientStop Color="{DynamicResource ControlMediumColor}"
+                         Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="1"
+                                            Storyboard.TargetProperty="Opacity"
+                                            Storyboard.TargetName="PART_DisabledVisual" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="PART_Root"
+                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="PART_Button"
+                                 Grid.Column="1"
+                                 Foreground="{TemplateBinding Foreground}"
+                                 Focusable="False"
+                                 HorizontalAlignment="Left"
+                                 Margin="3,0,3,0"
+                                 Grid.Row="0"
+                                 Style="{StaticResource xDropDownButtonStyle}"
+                                 VerticalAlignment="Top" />
+                            <DatePickerTextBox x:Name="PART_TextBox"
+                                 Grid.Column="0"
+                                 Foreground="{TemplateBinding Foreground}"
+                                 Focusable="{TemplateBinding Focusable}"
+                                 HorizontalContentAlignment="Stretch"
+                                 Grid.Row="0"
+                                 VerticalContentAlignment="Stretch" />
+                            <Grid x:Name="PART_DisabledVisual"
+                               Grid.ColumnSpan="2"
+                               Grid.Column="0"
+                               IsHitTestVisible="False"
+                               Opacity="0"
+                               Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Rectangle Grid.Column="0"
+                                      Fill="#A5FFFFFF"
+                                      RadiusY="1"
+                                      Grid.Row="0"
+                                      RadiusX="1" />
+                                <Rectangle Grid.Column="1"
+                                      Fill="#A5FFFFFF"
+                                      Height="18"
+                                      Margin="3,0,3,0"
+                                      RadiusY="1"
+                                      Grid.Row="0"
+                                      RadiusX="1"
+                                      Width="19" />
+                                <Popup x:Name="PART_Popup"
+                                      AllowsTransparency="True"
+                                      Placement="Bottom"
+                                      PlacementTarget="{Binding ElementName=PART_TextBox}"
+                                      StaysOpen="False" />
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="xCustomizedSimpleScrollEditStyle" TargetType="{x:Type GcjUiCtrl:CustomizedSimpleScrollEdit}">
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Hidden"/>
+        <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+    </Style>
+
+    <Style x:Key="xCustomizedScrollTextBlockStyle" TargetType="{x:Type GcjUiCtrl:CustomizedScrollTextBlock}">
+        <Setter Property="VerticalScrollBarVisibility" Value="Hidden"/>
+        <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Transparent"/>
+    </Style>
+    
+    <Style x:Key="xCustomizedRoundEditStyle" TargetType="{x:Type GcjUiCtrl:CustomizedRoundEdit}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GcjUiCtrl:CustomizedRoundEdit}">
+                    <Border 
+                        Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}" 
+                        CornerRadius="{TemplateBinding CornerRadius}" 
+                        SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!-- Default Property Setting -->
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="BorderBrush" Value="Gray"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Background" Value="White"/>
+
+        <!--<Setter Property="Foreground" Value="Gray" />
+        <Setter Property="Text">
+            <Setter.Value>此处请输入城市</Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Text" Value="">
+                <Setter Property="Foreground" Value="Black" />
+            </Trigger>
+        </Style.Triggers>-->
+    </Style>
+    
+
+    <Style x:Key="xCustomizedScrollControlStyle" TargetType="{x:Type GcjUiCtrl:CustomizedScrollControl}">
+    </Style>
+    
+    <Style x:Key="xCustomizedRoundCornerImageStyle" TargetType="{x:Type GcjUiCtrl:CustomizedRoundCornerImage}">
+    </Style>
+
+    <Style x:Key="xCustomizedDragbleStackPanelStyle" TargetType="{x:Type GcjUiCtrl:CustomizedDragbleStackPanel}">
+    </Style>
+
+    <Style x:Key="xCustomizedRoundContextMenuStyle" TargetType="{x:Type GcjUiCtrl:CustomizedRoundContextMenu}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GcjUiCtrl:CustomizedRoundContextMenu}">
+                    <!--<Border Background="LightGray" 
+                                BorderBrush="Gray" 
+                                BorderThickness="1" 
+                                CornerRadius="10">
+                        <StackPanel>
+                            <ItemsPresenter/>
+                        </StackPanel>
+                    </Border>-->
+                    <Border BorderBrush="Gray" 
+                            BorderThickness="1" 
+                            CornerRadius="6">
+                        <!-- 圆角设定 -->
+                        <StackPanel>
+                            <ItemsPresenter/>
+                        </StackPanel>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <!-- 从浅蓝色到浅灰，覆盖 0 到 0.8 -->
+                                <GradientStop Color="#E0F7FF" Offset="0" />
+                                <GradientStop Color="White" Offset="0.8" />
+                                <!-- 从浅灰回到浅蓝色，覆盖 0.8 到 1 -->
+                                <GradientStop Color="#E0F7FF" Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="xCustomizedITransparentButtonStyle" TargetType="{x:Type GcjUiCtrl:CustomizedTransparentButton}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <!-- 设置按钮文字颜色 -->
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GcjUiCtrl:CustomizedTransparentButton}">
+                    <ContentPresenter 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Content="{TemplateBinding Content}"
+                        />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="xCustomizedRoundButtonStyle" TargetType="{x:Type GcjUiCtrl:CustomizedRoundButton}" >
+        <Setter Property="Background" Value="LightBlue"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Padding" Value="10,5"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="Gray"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GcjUiCtrl:CustomizedRoundButton}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <!-- 控制圆角大小 -->
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="xCustomizedFlatButtonStyle" TargetType="{x:Type GcjUiCtrl:CustomizedFlatButton}" >
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Padding" Value="10,5"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="LightGray"/>
+        <Setter Property="Margin" Value="10,10,10,10"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <!--<ControlTemplate TargetType="{x:Type GcjUiCtrl:CustomizedFlatButton}">-->
+                <ControlTemplate TargetType="{x:Type GcjUiCtrl:CustomizedFlatButton}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="xCustomizedFlatButtonStyle2" TargetType="{x:Type GcjUiCtrl:CustomizedFlatButton}" >
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Padding" Value="10,5"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="LightGray"/>
+        <Setter Property="Margin" Value="10,5,10,5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <!--<ControlTemplate TargetType="{x:Type GcjUiCtrl:CustomizedFlatButton}">-->
+                <ControlTemplate TargetType="{x:Type GcjUiCtrl:CustomizedFlatButton}">
+                    <Border Background="{TemplateBinding Background}"
+                             BorderBrush="{TemplateBinding BorderBrush}"
+                             BorderThickness="{TemplateBinding BorderThickness}"
+                             CornerRadius="{TemplateBinding CornerRadius}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- CustomizedListBox 的样式 -->
+    <Style TargetType="{x:Type GcjUiCtrl:CustomizedListBox}" x:Key="xCustomizedListBoxStyle">
+        <!--<Setter Property="Background" Value="#F5F5F5"/>-->
+        <Setter Property="Background" Value="Transparent"/>
+        <!--<Setter Property="BorderBrush" Value="#D3D3D3"/>-->
+        <Setter Property="BorderBrush" Value="LightGray"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="5"/>
+    </Style>
+
+    <!-- CustomizedListBoxItem 的样式 -->
+    <Style TargetType="ListBoxItem" x:Key="xCustomizedListBoxItemStyle">
+        <Setter Property="Margin" Value="0,1"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <!--<Setter Property="Background" Value="LightGray"/>-->
+        <!--<Setter Property="Background" >
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#E0F7FF" Offset="0" />
+                    <GradientStop Color="White" Offset="0.7" />
+                    <GradientStop Color="#E0F7FF" Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>-->
+        <Setter Property="BorderBrush" Value="Gray"/>
+        <Setter Property="BorderThickness" Value="0.1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+        <!-- 交互状态 -->
+        <Setter Property="Template">
+            <Setter.Value>
+                <!--<ControlTemplate TargetType="{x:Type GcjUiCtrl:CustomizedListBoxItem}">-->
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <!-- 触发器 -->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#F0F8FF"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#ADD8E6"/>
+                            <Setter Property="BorderBrush" Value="#1E90FF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ItemTemplate 用于定义每项内容 -->
+    <DataTemplate x:Key="xCustomizedListBoxItemDataTemplateStyle">
+        <!--<StackPanel Orientation="Horizontal">
+             --><!--图标（可以是图片或其他内容）--><!-- 
+            <Ellipse Width="15" Height="15" Fill="SkyBlue" Margin="0,0,10,0"/>
+             --><!--项目标题--><!-- 
+            <TextBlock Text="{Binding}" FontWeight="Bold"/>
+        </StackPanel>-->
+        <TextBlock Text="{Binding}" FontWeight="Bold" FontSize="16" Height="30" Foreground="Black" Background="Transparent"/>
+    </DataTemplate>
+</ResourceDictionary>
