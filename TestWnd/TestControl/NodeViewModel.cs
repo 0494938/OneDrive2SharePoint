@@ -71,6 +71,21 @@ namespace IsidTestApp
         private bool _isExpanded;
         public string Name { get; set; }
         public bool IsFolder { get; set; } // 区分文件夹或文件
+        public int Percent { get; set; } // finished or not
+        public double PercentValue { get {
+                if (Status == ProcessStatus.Completed) return 100;
+                else if (Status == ProcessStatus.Processing) return 20;
+                else if (Status == ProcessStatus.Pending) return 0;
+                else return 0;
+            }
+        } // finished or not
+        public string ShowStatus{ get {
+                if (Status == ProcessStatus.Completed) return "100%";
+                else if (Status == ProcessStatus.Processing) return "Progressing, 20%, 4/10 files copied.";
+                else if (Status == ProcessStatus.Pending) return "0%";
+                else return "Unknown";
+            }
+        } // finished or not
         public DstNodeViewModel Parent { get; set; }
         public ObservableCollection<DstNodeViewModel> Children { get; set; } = new();
 

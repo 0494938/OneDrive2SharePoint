@@ -50,7 +50,7 @@
                             </Button.Template>
                         </Button>
 
-                        <TextBlock x:Name="txtTitle" Grid.Column="1" Foreground="{TemplateBinding TitleForeGround}" Text="{TemplateBinding TitleText}" FontWeight="Bold" VerticalAlignment="Top" Margin="10,0,0,0"/>
+                        <TextBlock x:Name="txtTitle" Grid.Column="1" Foreground="{TemplateBinding TitleForeGround}" Text="{TemplateBinding TitleText}" FontWeight="Bold" VerticalAlignment="Top" Margin="10,0,0,0" FontSize="{TemplateBinding TitleFontSize}"/>
                         <!-- Config -->
                         <GcjUiCtrl:CustomizedColorPicker 
                             Grid.Column="2" x:Name="colorPicker" BorderThickness="0" 

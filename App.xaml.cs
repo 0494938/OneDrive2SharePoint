@@ -52,14 +52,14 @@ namespace IsidTestApp
             mainWindow.Show();
 #else
 #if true
-#if true
+#if false
             var mainWindow = new MainMenu();
             mainWindow.Show();
 #else
-            var mainWindow = new TestAnimationCtrl();
+            var mainWindow = new MitsubishiTMigrateDataToSP();
             mainWindow.Show();
             
-            #endif
+#endif
 #else
             // 创建第一个窗口
             //var mainWindow = new DynamicXamlEditor3Test();

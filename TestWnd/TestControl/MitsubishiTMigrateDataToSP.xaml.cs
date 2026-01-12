@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Media;
 using Color = System.Windows.Media.Color;
 
@@ -155,6 +156,14 @@ namespace IsidTestApp
             Debug.WriteLine($"GcjBaseWindow_Loaded: (ActualWidth:{this.ActualWidth}, ActualHeight:{this.ActualHeight})");
         }
 
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Hyperlink link) {
+                Process.Start(new ProcessStartInfo(link.NavigateUri.ToString()) { UseShellExecute = true });
+                e.Handled = true;
+            }
+        }
+
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true });
@@ -170,5 +179,6 @@ namespace IsidTestApp
         {
 
         }
+
     }
 }

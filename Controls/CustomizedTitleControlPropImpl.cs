@@ -104,6 +104,22 @@ namespace GcjUiCtrl.Control
         }
         #endregion TitleText
 
+        #region TitleFontSize
+        public static readonly DependencyProperty TitleFontSizeProperty = DependencyProperty.Register(
+            "TitleFontSize",
+            typeof(double),
+            typeof(CustomizedTitleControl),
+            new PropertyMetadata((double)14));
+
+        [Description("Gets or sets the Customized Title Control Text FontSize")]
+        [Category("GcjControl")]
+        public double TitleFontSize
+        {
+            get { return (double)GetValue(TitleFontSizeProperty); }
+            set { SetValue(TitleFontSizeProperty, value); }
+        }
+        #endregion ColorPickerFontSize   
+
         #region SysButtonBackground
         public static readonly DependencyProperty SysButtonBackgroundProperty = DependencyProperty.Register(
             "SysButtonBackground",
