@@ -40,36 +40,10 @@ namespace IsidTestApp
 
         protected override void OnStartup(StartupEventArgs e)
         {
-
             base.OnStartup(e);
 
-#if false
-            new MessageHooking().HookAllThreadInCurrentProcess();
-#endif
-
-#if false
-            var mainWindow = new TelTestWebView2GrayBG();
-            mainWindow.Show();
-#else
-#if true
-#if false
-            var mainWindow = new MainMenu();
-            mainWindow.Show();
-#else
             var mainWindow = new MitsubishiTMigrateDataToSP();
             mainWindow.Show();
-            
-#endif
-#else
-            // 创建第一个窗口
-            //var mainWindow = new DynamicXamlEditor3Test();
-            //var mainWindow = new IsidTestControlWindow();
-            //var mainWindow = new OrgTelTestWedgitWindow();
-            //var mainWindow = new Temp1OrgTelTestWedgitWindow();
-            var mainWindow = new TelTestWedgitWindow();
-            mainWindow.Show();
-#endif
-#endif
         }
 
 
